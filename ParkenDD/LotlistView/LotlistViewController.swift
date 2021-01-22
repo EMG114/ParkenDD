@@ -76,6 +76,11 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 
 		refreshControl?.endRefreshing()
 	}
+	
+	override func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: titleButton.titleLabel?.text, style: .plain, target: nil, action: nil)
+	}
 
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showParkinglotMap" {
