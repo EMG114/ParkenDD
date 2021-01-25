@@ -13,6 +13,7 @@ class Location: NSObject {
     private override init() {
         super.init()
         Location.manager.delegate = self
+		Location.manager.desiredAccuracy = kCLLocationAccuracyBest
     }
 
     static let shared = Location()
@@ -41,4 +42,23 @@ extension Location: CLLocationManagerDelegate {
             didMove.forEach { $0(currentLocation) }
         }
     }
+	
+	func getLocationName(with location: CLLocation, completion: @escaping ((String?) -> Void )) {
+		
+		let geocoder = CLGeocoder()
+		geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+			guard let place = placemarks?.first, error == nil else {
+				completion(nil)
+				return
+			}
+			
+			var cityName = ""
+			if let locality = place.locality {
+				cityName += locality
+			}
+			completion(cityName)
+		}
+		
+	}
+	
 }

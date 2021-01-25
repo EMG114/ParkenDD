@@ -23,13 +23,20 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-
+		guard let location = Location.shared.lastLocation else { return }
         tableView.dataSource = dataSource
 
         Location.shared.onMove { [weak self] location in
             self?.tableView.reloadData()
         }
 
+		Location.shared.getLocationName(with: location) { (cityName) in
+			DispatchQueue.main.async {
+				self.updateTitle(withCity: cityName)
+			}
+			self.tableView.reloadData()
+		}
+		
 		// display the standard reload button
 		showReloadButton()
 
