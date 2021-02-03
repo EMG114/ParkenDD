@@ -26,7 +26,7 @@ class LotlistDataSource: NSObject, UITableViewDataSource {
         parkingLots = UserDefaults.bool(for: .skipNodataLots) ? lots.filter { $0.state != .nodata } : lots
     }
 
-	func sortLots() {
+	func sortLots(sortType: String) {
 		guard let sortingType = UserDefaults.standard.string(forKey: Defaults.sortingType) else { return }
 		switch sortingType {
 		case Sorting.distance:
@@ -65,6 +65,11 @@ class LotlistDataSource: NSObject, UITableViewDataSource {
 		default:
 			parkingLots = defaultSortedLots
 		}
+	}
+	
+	func sortLots() {
+		let sortingType = UserDefaults.string(for: .sortingType) ?? ""
+		sortLots(sortType: sortingType)
 	}
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
