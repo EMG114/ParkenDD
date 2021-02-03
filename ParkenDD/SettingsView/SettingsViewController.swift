@@ -277,6 +277,8 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 				break
 			}
 		}
+		
+		refreshLotlist()
 
 		tableView.deselectRow(at: indexPath, animated: true)
 	}

@@ -73,9 +73,7 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 		} else {
 			Location.manager.stopUpdatingLocation()
 		}
-
-        (tableView.dataSource as? LotlistDataSource)?.sortLots()
-
+		updateData()
 		refreshControl?.endRefreshing()
 	}
 	
@@ -114,7 +112,8 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
                 self?.stopRefreshUI()
                 self?.showOutdatedDataWarning(lastUpdated: response.lastUpdated, lastDownloaded: response.lastDownloaded)
                 DispatchQueue.main.async {
-                    (self?.tableView.dataSource as? LotlistDataSource)?.set(lots: response.lots)
+					(self?.tableView.dataSource as? LotlistDataSource)?.set(lots: response.lots)
+					(self?.tableView.dataSource as? LotlistDataSource)?.sortLots()
                     self?.parkinglots = response.lots
                     self?.tableView.reloadData()
                 }
