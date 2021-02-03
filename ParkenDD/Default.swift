@@ -12,7 +12,6 @@ enum Default: String {
     case selectedCity
     case selectedCityName
     case sortingType
-    case supportedCities
     case grayscaleUI
     case skipNodataLots
     case favoriteLots
@@ -23,7 +22,6 @@ enum Default: String {
             .selectedCity: "Dresden",
             .selectedCityName: "Dresden",
             .sortingType: "standard",
-            .supportedCities: ["Dresden"],
             .grayscaleUI: false,
             .skipNodataLots: false,
             .favoriteLots: [],
