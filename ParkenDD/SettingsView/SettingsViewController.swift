@@ -23,7 +23,9 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+		
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: L10n.settings.string, style: .plain, target: nil, action: nil)
+	
 		let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(SettingsViewController.dismiss as (SettingsViewController) -> () -> ()))
 		self.navigationItem.rightBarButtonItem = doneButton
 

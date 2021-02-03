@@ -25,7 +25,9 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 		super.viewDidLoad()
 
         tableView.dataSource = dataSource
-
+		
+		navigationItem.backBarButtonItem = UIBarButtonItem(title: titleButton.titleLabel?.text, style: .plain, target: nil, action: nil)
+	
         Location.shared.onMove { [weak self] location in
             self?.tableView.reloadData()
         }
@@ -76,7 +78,7 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 
 		refreshControl?.endRefreshing()
 	}
-
+	
 	override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
 		if segue.identifier == "showParkinglotMap" {
 			let indexPath = tableView.indexPathForSelectedRow
