@@ -61,6 +61,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		07C4E6EC25CB2107005F5706 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		07C4E6EF25CB2487005F5706 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126B02BC31AC3082DEF3E5D9 /* Pods_ParkenDD.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ParkenDD.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3904EE041B55C61700B2933B /* Settings.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		3926FECC1AAC47AA005B2DF9 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				3977CA281A9CC78E00E20014 /* de */,
 				398E45C81BE8FA9A002E0DA8 /* pl */,
 				39B8D9B71E084DD600659F0F /* cs */,
+				07C4E6EF25CB2487005F5706 /* en */,
 			);
 			name = InfoPlist.strings;
 			path = .;
@@ -562,6 +565,7 @@
 				397D7B201A9A223A001B5874 /* de */,
 				398E45C91BE8FA9A002E0DA8 /* pl */,
 				39B8D9B81E084DD600659F0F /* cs */,
+				07C4E6EC25CB2107005F5706 /* en */,
 			);
 			name = Localizable.strings;
 			path = .;
