@@ -18,19 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	var inBackground = false
 
-	var supportedCities: [String]?
-	var citiesList = [City]() {
-		didSet {
-            supportedCities = citiesList.map{ $0.name }.sorted()
-		}
-	}
-
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Location.manager.requestWhenInUseAuthorization()
 
         UserDefaults.register(Default.default())
-
-		supportedCities = UserDefaults.standard.array(forKey: Defaults.supportedCities) as? [String]
 
 		// apply custom font to UIBarButtonItems (mainly the back button) as well
 		let font = UIFont(name: "AvenirNext-Medium", size: 18.0)
@@ -51,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 		// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 
 		inBackground = true
-		UserDefaults.standard.set(supportedCities, forKey: Defaults.supportedCities)
+	
 	}
 
 	func applicationWillEnterForeground(_ application: UIApplication) {
