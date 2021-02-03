@@ -19,6 +19,7 @@ enum Sections: Int {
 	case otherOptions
 }
 
+@available(iOS 9.0, *)
 class SettingsViewController: UITableViewController, MFMailComposeViewControllerDelegate {
 
     override func viewDidLoad() {
@@ -253,6 +254,14 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 					let tweetsheet = SLComposeViewController(forServiceType: SLServiceTypeTwitter)
 					tweetsheet?.setInitialText(L10n.tweetText.string)
 					self.present(tweetsheet!, animated: true, completion: nil)
+				} else {
+					let stringURL = "https://twitter.com/"
+					guard let url = URL(string: stringURL) else {
+						return
+					}
+					
+					let safariVC = SFSafariViewController(url: url)
+					self.present(safariVC, animated: true, completion: nil)
 				}
 			case 2:
 				if MFMailComposeViewController.canSendMail() {
