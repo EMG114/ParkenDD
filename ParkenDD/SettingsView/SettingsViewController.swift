@@ -255,16 +255,23 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 					self.present(tweetsheet!, animated: true, completion: nil)
 				}
 			case 2:
+				let recipientEmail = "egut@gmail.com"
+				let subject = "Help"
 				if MFMailComposeViewController.canSendMail() {
 					let mail = MFMailComposeViewController()
 					mail.mailComposeDelegate = self
-
-					let versionNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-                    let buildNumber = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String
-					mail.setSubject("[ParkenDD v\(versionNumber!) (\(buildNumber!))] Feedback")
-					mail.setToRecipients(["parkendd@kilian.io"])
-
+					
+					mail.setSubject(subject)
+					mail.setToRecipients([recipientEmail])
+					
 					self.present(mail, animated: true, completion: nil)
+				} else {
+					if #available(iOS 9.0, *) {
+						let safariVC = SFSafariViewController(url: URL(string: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=\(recipientEmail)&SUBJECT=\(subject)&tf=1")!)
+						present(safariVC, animated: true, completion: nil)
+					} else {
+						UIApplication.shared.openURL(URL(string: "https://mail.google.com/mail/u/0/?view=cm&fs=1&to=\(recipientEmail)&SUBJECT=\(subject)&tf=1")!)
+					}
 				}
 			case 3:
 				if #available(iOS 9.0, *) {
@@ -293,4 +300,12 @@ func refreshLotlist() -> Void {
     if let lotlistVC = UIApplication.shared.keyWindow?.rootViewController?.childViewControllers[0] as? LotlistViewController {
         lotlistVC.updateData()
     }
+	
+	// MARK: MFMailComposeViewControllerDelegate Conformance
+	
+	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+		controller.dismiss(animated: true)
+	}
 }
+
+
