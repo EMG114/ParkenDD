@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 	func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         Location.manager.requestWhenInUseAuthorization()
-
+		Location.manager.startUpdatingLocation()
         UserDefaults.register(Default.default())
 
 		supportedCities = UserDefaults.standard.array(forKey: Defaults.supportedCities) as? [String]
