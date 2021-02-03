@@ -260,10 +260,10 @@ class SettingsViewController: UITableViewController, MFMailComposeViewController
 				if MFMailComposeViewController.canSendMail() {
 					let mail = MFMailComposeViewController()
 					mail.mailComposeDelegate = self
-
+					
 					mail.setSubject(subject)
 					mail.setToRecipients([recipientEmail])
-
+					
 					self.present(mail, animated: true, completion: nil)
 				} else {
 					if #available(iOS 9.0, *) {
@@ -302,7 +302,7 @@ func refreshLotlist() -> Void {
     }
 	
 	// MARK: MFMailComposeViewControllerDelegate Conformance
-
+	
 	func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
 		controller.dismiss(animated: true)
 	}
