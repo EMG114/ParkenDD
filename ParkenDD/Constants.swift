@@ -20,7 +20,6 @@ struct Defaults {
 	static let selectedCity           = "selectedCity"
 	static let selectedCityName       = "selectedCityName"
 	static let sortingType            = "sortingType"
-	static let supportedCities        = "supportedCities"
 	static let grayscaleUI            = "grayscaleUI"
 	static let skipNodataLots         = "skipNodataLots"
 	static let favoriteLots           = "favoriteLots"
