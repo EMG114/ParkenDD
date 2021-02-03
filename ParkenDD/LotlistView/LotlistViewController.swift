@@ -23,19 +23,12 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		guard let location = Location.shared.lastLocation else { return }
+	
         tableView.dataSource = dataSource
 
         Location.shared.onMove { [weak self] location in
             self?.tableView.reloadData()
         }
-
-		Location.shared.getLocationName(with: location) { (cityName) in
-			DispatchQueue.main.async {
-				self.updateTitle(withCity: cityName)
-			}
-			self.tableView.reloadData()
-		}
 		
 		// display the standard reload button
 		showReloadButton()
@@ -57,6 +50,20 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 
 		updateData()
 		Timer.every(5.minutes, updateData)
+		
+		NotificationCenter.default.addObserver(self,
+											   selector: #selector(userDidAuthorizeTracking(_:)),
+											   name: NSNotification.Name("UserDidAuthorizeLocationTracking"),
+											   object: nil)
+	}
+	
+	@objc func userDidAuthorizeTracking(_ notification: Notification) {
+		
+		// Request new lots by distance.
+		dataSource.sortLots(sortType: Sorting.distance)
+		
+		updateTitle(withCity: nil)
+		tableView.reloadData()
 	}
 
 	override func viewWillAppear(_ animated: Bool) {
