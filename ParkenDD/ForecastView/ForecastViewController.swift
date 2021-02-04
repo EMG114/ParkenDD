@@ -14,6 +14,7 @@ class ForecastViewController: UIViewController {
 	
 	var lot: Lot?
     var data: [(Date, Int)]?
+	let park = ParkKit()
 	
 	let dateFormatter = DateFormatter(dateFormat: "yyyy-MM-dd'T'HH:mm:ss", timezone: nil)
 	let labelDateFormatter = DateFormatter(dateFormat: "HH:mm", timezone: nil)

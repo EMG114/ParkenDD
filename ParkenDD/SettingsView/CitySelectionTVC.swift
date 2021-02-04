@@ -12,7 +12,8 @@ import ParkKit
 class CitySelectionTVC: UITableViewController {
 
     var availableCities = [City]()
-
+	let park = ParkKit()
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
