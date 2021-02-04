@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import ParkKit
 
 class Location: NSObject {
     private override init() {
@@ -22,6 +23,7 @@ class Location: NSObject {
     }
 
     var lastLocation: CLLocation?
+	let park = ParkKit()
 
     // This is really weird o.O
     var didMove = [(CLLocation) -> Void]()

@@ -9,8 +9,6 @@
 import UIKit
 import ParkKit
 
-let park = ParkKit()
-
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 

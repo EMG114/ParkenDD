@@ -18,6 +18,7 @@ class LotlistViewController: UITableViewController, UIViewControllerPreviewingDe
 	var dataURL: String?
 
     var dataSource = LotlistDataSource()
+	let park = ParkKit()
 
 	@IBOutlet weak var titleButton: UIButton!
 
